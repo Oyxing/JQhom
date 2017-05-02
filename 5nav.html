@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;list-style: none;}
+			
+			div{width: 100px;height: 50px;background-color: aliceblue;line-height: 50px;text-align: center;}
+			ul{margin-top: 3px;}
+			ul li{ width: 100px;height: 49px;border-bottom: 3px solid white;background-color: #FFFF00; line-height: 49px;text-align: center;}
+			ul{display: none;}
+		</style>
+		<script src="js/JQ1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+			<div id="wen">
+				文字1
+			</div>
+			<ul class="wen1">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>	
+			</ul>
+			<div id="wen">
+				文字2
+			</div>
+			<ul class="wen2">
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>	
+			</ul>
+			<div id="wen">
+				文字3
+			</div>
+			<ul class="wen3">
+				<li>11</li>
+				<li>12</li>
+				<li>13</li>
+				<li>14</li>
+				<li>15</li>	
+			</ul>
+		<script type="text/javascript">
+		console.log($('div:eq(1)'))	
+		console.log($('div:eq(2)'))	
+		console.log($('div:eq(3)'))	
+		$('div:eq(0)').click(function(){
+            $('ul:eq(0)').toggle("normal",function(){
+                // alert("切换完毕");
+            });
+        })
+		$('div:eq(1)').click(function(){
+            $('ul:eq(1)').toggle("normal",function(){
+                // alert("切换完毕");
+            });
+        })	
+		$('div:eq(2)').click(function(){
+            $('ul:eq(2)').toggle("normal",function(){
+                // alert("切换完毕");
+            });
+        })
+		$('ul li').mouseenter(function(){
+			$(this).css('background-color','red')
+		})
+		$('ul li').mouseleave(function(){
+			$(this).css('background-color','yellow')
+		})
+		</script>
+	</body>
+</html>

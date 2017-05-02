@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;list-style: none;text-decoration: none;}
+			div{border-left:2px solid white; width: 100px;height: 50px;background-color: aliceblue;line-height: 50px;text-align: center;}		
+			div{float: left;}
+			ul li{ width: 100px;height: 49px;border-bottom: 3px solid white;background-color: #FFFF00; line-height: 49px;text-align: center;}
+			ul{display: none;}
+		</style>
+		<script src="js/JQ1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="wen" style="background-color: whitesmoke;">
+				文字1
+			<ul class="wen1">
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>	
+			</ul>
+		</div>
+		<div id="wen">
+				文字2
+			<ul class="wen2">
+				<li><a href="#">6</a></li>
+				<li><a href="#">7</a></li>
+				<li><a href="#">8</a></li>
+				<li><a href="#">9</a></li>
+				<li><a href="#">10</a></li>	
+			</ul>
+		</div>
+		<div id="wen">
+				文字3
+			<ul class="wen3">
+				<li><a href="#">11</a></li>
+				<li><a href="#">12</a></li>
+				<li><a href="#">13</a></li>
+				<li><a href="#">14</a></li>
+				<li><a href="#">15</a></li>	
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+			console.log($('div:eq(1)'))	
+		console.log($('div:eq(2)'))	
+		console.log($('div:eq(3)'))	
+		$('div:eq(0)').click(function(){
+            $('ul:eq(0)').slideToggle(500);
+            $('ul:eq(1)').css('display','none');
+            $('ul:eq(2)').css('display','none');
+            $('div:eq(0)').css('background-color','whitesmoke');
+            $('div:eq(1)').css('background-color','aliceblue');
+            $('div:eq(2)').css('background-color','aliceblue');
+      })
+		$('div:eq(1)').click(function(){
+            $('ul:eq(1)').slideToggle(500);
+            $('ul:eq(0)').css('display','none');
+            $('ul:eq(2)').css('display','none');
+            $('div:eq(1)').css('background-color','whitesmoke');
+            $('div:eq(0)').css('background-color','aliceblue');
+            $('div:eq(2)').css('background-color','aliceblue');
+       })	
+		$('div:eq(2)').click(function(){
+            $('ul:eq(2)').slideToggle(500);
+            $('ul:eq(0)').css('display','none');
+            $('ul:eq(1)').css('display','none');
+            $('div:eq(2)').css('background-color','whitesmoke');
+            $('div:eq(0)').css('background-color','aliceblue');
+            $('div:eq(1)').css('background-color','aliceblue');
+        })
+		$('ul li').mouseenter(function(){
+			$(this).css('background-color','#375')
+		})
+		$('ul li').mouseleave(function(){
+			$(this).css('background-color','yellow')
+		})	
+			
+	</script>
+</html>

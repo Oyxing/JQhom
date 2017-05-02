@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;list-style: none;text-decoration: none;}
+			div{overflow:hidden ; position: relative; width:240px;height: 240px;border: 1px solid black; margin-left: 300px;}	
+			ul{width: 960px;position: absolute;}
+			/*ul{left: 240px;}*/
+			ul li{float: left;}
+			.sub li{cursor: ; width: 20px;height: 20px;margin-left: 10px;border: 1px solid rosybrown;text-align: center;line-height: 20px;}
+
+		</style>
+		<script src="js/JQ1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="banner">
+			<ul class="tu">
+				<li><img src="img/biao1.jpg"/></li>
+				<li><img src="img/biao2.jpg"/></li>
+				<li><img src="img/biao3.jpg"/></li>
+				<li><img src="img/biao4.jpg"/></li>
+			</ul>
+			<ul class="sub" style="margin-top: 210px;margin-left: 110px;position: absolute;">
+				<li class="sub-1">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			$('ul li:eq(4)').click(function(){
+				$('ul:eq(0)').css('left','0px')
+				$(this).css('background-color','orangered')
+				$('ul li:eq(5)').css('background-color','')
+				$('ul li:eq(6)').css('background-color','')
+				$('ul li:eq(7)').css('background-color','')	
+			})
+			$('ul li:eq(5)').click(function(){
+				$('ul:eq(0)').css('left','-240px');
+				$(this).css('background-color','orangered')
+				$('ul li:eq(4)').css('background-color','')
+				$('ul li:eq(6)').css('background-color','')
+				$('ul li:eq(7)').css('background-color','')	
+			})
+			$('ul li:eq(6)').click(function(){
+				$('ul:eq(0)').css('left','-480px')
+				$(this).css('background-color','orangered')
+				$('ul li:eq(5)').css('background-color','')
+				$('ul li:eq(4)').css('background-color','')
+				$('ul li:eq(7)').css('background-color','')
+			})
+			$('ul li:eq(7)').click(function(){
+				$('ul:eq(0)').css('left','-720px')
+				$(this).css('background-color','orangered')
+				$('ul li:eq(5)').css('background-color','')
+				$('ul li:eq(6)').css('background-color','')
+				$('ul li:eq(4)').css('background-color','')
+			})
+			var i = 0;
+			function bannertu(){
+				i++
+				$('ul:eq(0)').animate({'left': i*-240+'px'},2000)
+				if(i == 3){ i = -1}
+			}
+			console.log($('div'))
+			$('div').mouseenter(function(){
+				clearInterval(timer)
+			})
+			$('div').mouseleave(function(){
+				timer = setInterval(bannertu,1000)
+			})
+			var timer = setInterval(bannertu,1000)
+		</script>
+	</body>
+</html>
