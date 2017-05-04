@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			#box{width: 100px;height: 100px;background-color: red;position: absolute;}
+		</style>
+	</head>
+	<script src="js/JQ1.js" type="text/javascript" charset="utf-8"></script>
+	<body>
+		
+		
+		
+		<div id="box">
+			
+		</div>
+		<script type="text/javascript">
+			$.fn.extend({
+				drag : function(){
+					var disX = 0;
+					var disY = 0;
+					var self = this;
+					this.mousedown(function(ev){
+						disX = ev.pageX - $(this).offset().left;
+						disY = ev.pageY - $(this).offset().top;
+						$(document).mousemove(function(ev){
+							self.css("left",ev.pageX - disX);
+							self.css("top",ev.pageY - disY);
+						})
+						$(document).mouseup(function(){
+							$(this).off()
+						})	
+						return false
+					})	
+				},
+				xiaoming : function(){
+					alert("小明");
+				}
+				
+			})
+	
+		</script>
+	<script type="text/javascript">
+		//调用插件
+		console.log($('div'))
+		$('div').drag()
+		$('#box').xiaoming()
+	</script>
+	</body>
+</html>

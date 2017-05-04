@@ -14,17 +14,32 @@
 			.img4{left: 600px;}
 			.img5{left: 800px;}
 			#dan{width: 300px;height: 100px;border: 1px solid black;position: absolute;top: 0;}
+			.mast{width: 600px;height: 400px;background: rgba(0,0,0,0.7);position: absolute;top: 0;}
 		</style>
 		<script src="js/JQ1.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
 		<div id="box">
 			<ul>
-				<li class="img1"><a href=""><img src="img/1.jpg"/></a></li>
-				<li class="img2"><a href=""><img src="img/2.jpg"/></a></li>
-				<li class="img3"><a href=""><img src="img/3.jpg"/></a></li>
-				<li class="img4"><a href=""><img src="img/4.jpg"/></a></li>
-				<li class="img5"><a href=""><img src="img/5.jpg"/></a></li>
+				<li class="img1"><a href=""><img src="img/1.jpg"/>
+					<div class="mast"></div>
+					
+				</a></li>
+				<li class="img2"><a href=""><img src="img/2.jpg"/>
+					<div class="mast"></div>
+					
+				</a></li>
+				<li class="img3"><a href=""><img src="img/3.jpg"/>
+					<div class="mast"></div>
+					
+				</a></li>
+				<li class="img4"><a href=""><img src="img/4.jpg"/>
+					<div class="mast"></div>
+					
+				</a></li>
+				<li class="img5"><a href=""><img src="img/5.jpg"/>
+					<div class="mast"></div>
+				</a></li>
 			</ul>
 		</div>
 		<div id="dan">
@@ -60,148 +75,80 @@
 		
 
 		<script type="text/javascript">
-			$('img').each(function(){
-				$('ul li').mouseenter(function(){
-					var i = $(this).index()
-					if ($('ul li').eq(i).is(":animated")){
-		                	return;
-	          		}
-					switch (i){
-						case 0:
-						$('ul li').eq(1).animate({'left':600},500)
-						$('ul li').eq(2).animate({'left':700},500)
-						$('ul li').eq(3).animate({'left':800},500)
-						$('ul li').eq(4).animate({'left':900},500)
-							break;
-						case 1:
-						$('ul li').eq(1).animate({'left':100},500)
-						$('ul li').eq(2).animate({'left':700},500)
-						$('ul li').eq(3).animate({'left':800},500)
-						$('ul li').eq(4).animate({'left':900},500)
-							break;
-						case 2:
-						$('ul li').eq(1).animate({'left':100},500)
-						$('ul li').eq(2).animate({'left':200},500)
-						$('ul li').eq(3).animate({'left':800},500)
-						$('ul li').eq(4).animate({'left':900},500)
-							break;
-						case 3:
-						$('ul li').eq(1).animate({'left':100},500)
-						$('ul li').eq(2).animate({'left':200},500)
-						$('ul li').eq(3).animate({'left':300},500)
-						$('ul li').eq(4).animate({'left':900},500)
-							break;
-						case 4:
-						$('ul li').eq(1).animate({'left':100},500)
-						$('ul li').eq(2).animate({'left':200},500)
-						$('ul li').eq(3).animate({'left':300},500)
-						$('ul li').eq(4).animate({'left':400},500)
-							break;
-						default:
-							break;
+			//简化
+			$('#box ul li').mouseenter(function(){
+				$('#box ul li').stop(true)
+					var index = $(this).index()
+				$('#box ul li').each(function(i){
+					console.log(index)
+					if(i <= index){
+				
+						$('ul li').eq(index).find('.mast').stop(true).fadeOut()
+						$(this).stop(true).animate({'left': 100 * i},1000)
+						
+					}else{
+						$('ul li').eq(i).find('.mast').stop(true).fadeIn()
+						$(this).stop(true).animate({'left':100 * (i-1) + 600},1000)
 					}
-					
+
+				})
+	
+			})
+			$('#box ul li').mouseleave(function(){	
+				$(this).find('.mast').stop(true).fadeIn()
+				$('ul li').each(function(i){
+					$('ul li').eq(i).animate({'left' : i * 200},1000)
 				})
 			})
-			$('div').mouseleave(function(){
-				$('.img2').animate({'left':200},1000)
-				$('.img3').animate({'left':400},1000)
-				$('.img4').animate({'left':600},1000)
-				$('.img5').animate({'left':800},1000)
-			})	
 		</script>
 		<script type="text/javascript">
-/*			$('.img1').mouseenter(function(){
-				var i = $(this).index()
-					if ($('ul li').eq(i).is(":animated")){
-	                	return;
-          	}
-				$('.img2').animate({'left':600},500)
-				$('.img3').animate({'left':700},500)
-				$('.img4').animate({'left':800},500)
-				$('.img5').animate({'left':900},500)
-			})	
-			$('.img2').mouseenter(function(){
-				var i = $(this).index()
-					if ($('ul li').eq(i).is(":animated")){
-	                	return;
-          	}
-				$('.img2').animate({'left':100},500)
-				$('.img3').animate({'left':700},500)
-				$('.img4').animate({'left':800},500)
-				$('.img5').animate({'left':900},500)
-			})
-			$('.img3').mouseenter(function(){
-				var i = $(this).index()
-					if ($('ul li').eq(i).is(":animated")){
-	                	return;
-          	}
-				$('.img2').animate({'left':100},500)
-				$('.img3').animate({'left':200},500)
-				$('.img4').animate({'left':800},500)
-				$('.img5').animate({'left':900},500)
-			})
-			$('.img4').mouseenter(function(){
-				var i = $(this).index()
-					if ($('ul li').eq(i).is(":animated")){
-	                	return;
-         		}
-				$('.img2').animate({'left':100},500)
-				$('.img3').animate({'left':200},500)
-				$('.img4').animate({'left':300},500)
-				$('.img5').animate({'left':900},500)
-			})
-
-			$('.img5').mouseenter(function(){
-				var i = $(this).index()
-					if ($('ul li').eq(i).is(":animated")){
-	                	return;
-          	}
-				$('.img2').animate({'left':100},500)
-				$('.img3').animate({'left':200},500)
-				$('.img4').animate({'left':300},500)
-				$('.img5').animate({'left':400},500)
-			})
-			$('div').mouseleave(function(){
-				$('.img2').animate({'left':200},1000)
-				$('.img3').animate({'left':400},1000)
-				$('.img4').animate({'left':600},1000)
-				$('.img5').animate({'left':800},1000)
-			})*/
-		</script>
-		<script type="text/javascript">
-//			var idx
-//			var imL
-//			var imgR
-//			var lefts
-//		$('img').each(function(){
-//			$(this).mouseenter(function(){
-//				 idx = $(this).index();
-//				 imgL = "img:lt(" + idx + ")";
-//				 imgR = "img:gt(" + idx + ")";
-//				 lefts = idx * 100;	 
-//				$(this).stop(true).animate({'left' : idx * 100},1000);	 
-//				$(imgL).each(function(){
-//					console.log(idx)
-//					 console.log(imgL)
-//					 console.log(imgR)
-//					$(this).stop(true).animate({'left' : ($(this).index()) * 100},1000);
-//				})
-//				$(imgR).each(function(){
-//					$(this).stop(true).animate({'left' : ($(this).index()+7) * 100},1000);			
-//				})	 
-//			})		
-//		})
-//		$("img").each(function(){
-//			$(this).mouseleave(function(){
-//				$("img").each(function(){
-//					$(this).stop(true).animate({"left" : ($(this).index())*200}, 1000);
-//				})
-//			});
-//		})	
-//				
 			
-
+		//复杂
+		
+//			$('img').each(function(){
+//				$('ul li').mouseenter(function(){
+//					var i = $(this).index()
+//					if ($('ul li').eq(i).is(":animated")){
+//		                	return;
+//	          		}
+//					switch (i){
+//						case 0:
+//						$('ul li').eq(1).animate({'left':600},500)
+//						$('ul li').eq(2).animate({'left':700},500)
+//						$('ul li').eq(3).animate({'left':800},500)
+//						$('ul li').eq(4).animate({'left':900},500)
+//							break;
+//						case 1:
+//						$('ul li').eq(1).animate({'left':100},500)
+//						$('ul li').eq(2).animate({'left':700},500)
+//						$('ul li').eq(3).animate({'left':800},500)
+//						$('ul li').eq(4).animate({'left':900},500)
+//							break;
+//						case 2:
+//						$('ul li').eq(1).animate({'left':100},500)
+//						$('ul li').eq(2).animate({'left':200},500)
+//						$('ul li').eq(3).animate({'left':800},500)
+//						$('ul li').eq(4).animate({'left':900},500)
+//							break;
+//						case 3:
+//						$('ul li').eq(1).animate({'left':100},500)
+//						$('ul li').eq(2).animate({'left':200},500)
+//						$('ul li').eq(3).animate({'left':300},500)
+//						$('ul li').eq(4).animate({'left':900},500)
+//							break;
+//						case 4:
+//						$('ul li').eq(1).animate({'left':100},500)
+//						$('ul li').eq(2).animate({'left':200},500)
+//						$('ul li').eq(3).animate({'left':300},500)
+//						$('ul li').eq(4).animate({'left':400},500)
+//							break;
+//						default:
+//							break;
+//					}
+//					
+//				})
+//			})
 		</script>
+
 	</body>
 </html>

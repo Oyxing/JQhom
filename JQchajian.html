@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;list-style: none;}
+			
+				li{top: 0; width: 20px;height: 20px;border-radius:50px;background-color: red;position: absolute;}
+		</style>
+	</head>
+	<script src="js/JQ1.js" type="text/javascript" charset="utf-8"></script>
+	<body>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		
+		<script type="text/javascript">
+			$.fn.extend({
+					
+				move : function(){
+					var disX = 0;
+					var disY = 0;
+					var self = this;
+					
+					this.mousemove(function(ev){
+						
+						disX = ev.pageX - $(this).offset().left;
+						disY = ev.pageY - $(this).offset().top;	
+							var timer
+							$(document).mousemove(function(ev){
+								var num = 0
+								timer = setInterval(function(){
+									
+									if(num==20){
+									clearInterval(timer);
+										return;
+									}else{
+										self.eq(num).css("left",ev.clientX - 10 - disX);
+										self.eq(num).css("top",ev.clientY - 10 - disY);
+										num++
+										console.log(num)
+									}
+								},15)		
+
+						})
+						
+						
+						
+					})
+					
+					
+
+				}
+
+
+				
+				
+			})
+		</script>
+		<script type="text/javascript">
+			$('ul li').move()
+			
+		</script>
+	</body>
+</html>
